@@ -1,10 +1,10 @@
 
 import React, { useState, useCallback } from 'react';
-import WelcomeScreen from './Components/WelcomeScreen';
-import FeelingInput from './Components/FeelingInput';
-import ImageGeneration from './Components/ImageGeneration';
-import Reflection from './Components/Reflection';
-import SessionHistory from './Components/SessionHistory';
+import WelcomeScreen from './components/WelcomeScreen';
+import FeelingInput from './components/FeelingInput';
+import ImageGeneration from './components/ImageGeneration';
+import Reflection from './components/Reflection';
+import SessionHistory from './components/SessionHistory';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import type { Session, AppState } from './types';
 import { HistoryIcon } from './constants';
