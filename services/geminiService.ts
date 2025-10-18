@@ -1,11 +1,8 @@
-
 import { GoogleGenAI } from "@google/genai";
 
-if (!process.env.API_KEY) {
-    console.warn("API_KEY environment variable not set. Using a placeholder key. Please set your API key for the app to function.");
-}
+// FIX: Use `process.env.API_KEY` as per the guidelines to fix the TypeScript error "Property 'env' does not exist on type 'ImportMeta'".
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "AIzaSyD3LTb5UjfTXqLX_91gbUGyOy_OGSYZ6jk" });
 
 export const generateArtFromFeelings = async (feelings: string): Promise<string> => {
     try {
@@ -29,6 +26,10 @@ export const generateArtFromFeelings = async (feelings: string): Promise<string>
         }
     } catch (error) {
         console.error("Error generating image with Gemini API:", error);
+        if (error instanceof Error && (error.message.toLowerCase().includes('api key'))) {
+            // FIX: Updated error message to refer to the correct environment variable.
+             throw new Error("The API key is invalid or lacks permissions. Please check your API_KEY environment variable.");
+        }
         throw new Error("Failed to create art. The connection to the creative muse seems to be lost. Please try again later.");
     }
 };
