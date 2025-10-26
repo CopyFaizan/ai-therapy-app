@@ -1,11 +1,7 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-if (!process.env.API_KEY) {
-    console.warn("API_KEY environment variable not set. Using a placeholder key. Please set your API key for the app to function.");
-}
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "AIzaSyD3LTb5UjfTXqLX_91gbUGyOy_OGSYZ6jk" });
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const generateArtFromFeelings = async (feelings: string): Promise<string> => {
     try {
