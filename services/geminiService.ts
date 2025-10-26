@@ -1,7 +1,7 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: AIzaSyD3LTb5UjfTXqLX_91gbUGyOy_OGSYZ6jk });
 
 export const generateArtFromFeelings = async (feelings: string): Promise<string> => {
     try {
